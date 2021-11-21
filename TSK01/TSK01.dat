@@ -183,6 +183,8 @@
 !ADD_WARE_TO_LAST 8 9000
 !ADD_WARE_TO_LAST 10 9000
 !SET_HOUSE 27 23 9
+!ADD_WARE_TO_LAST 8 5
+!ADD_WARE_TO_LAST 10 5
 
 
 !SET_STREET 19 6 !SET_STREET 19 7 !SET_STREET 20 7 !SET_STREET 20 8
@@ -437,4 +439,4 @@
 !SET_UNIT 25 5 71
 !SET_UNIT 25 11 77
 
-//This mission was made with KaM Remake Map Editor version r13651 at 21.11.2021 22:07:10
+//This mission was made with KaM Remake Map Editor version r13651 at 21.11.2021 22:07:58
