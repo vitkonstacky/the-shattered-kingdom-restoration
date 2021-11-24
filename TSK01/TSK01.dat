@@ -325,7 +325,7 @@
 !SET_UNIT 0 91 22
 !SET_GROUP 19 55 24 3 4 8
 !SET_GROUP 19 70 10 7 4 8
-!SET_GROUP 19 75 7 6 4 6
+!SET_GROUP 19 75 7 6 4 4
 !SET_GROUP 17 51 19 3 4 8
 !SET_GROUP 17 70 3 6 4 6
 !SET_GROUP 17 74 14 7 4 6
@@ -522,4 +522,4 @@
 !SET_UNIT 25 5 71
 !SET_UNIT 25 11 77
 
-//This mission was made with KaM Remake Map Editor version r13651 at 24.11.2021 20:46:58
+//This mission was made with KaM Remake Map Editor version r13651 at 24.11.2021 20:55:44
