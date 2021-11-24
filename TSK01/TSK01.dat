@@ -9,12 +9,14 @@
 !CENTER_SCREEN 55 65
 !CLEAR_UP 62 65 15
 
+!ADD_LOST_GOAL 3 0 0 0
 !ADD_GOAL 3 1 0 1
 !ADD_GOAL 3 1 0 2
 !ADD_GOAL 4 1 0 1
 !ADD_GOAL 4 1 0 2
 !ADD_GOAL 4 1 0 3
-!ADD_LOST_GOAL 3 0 0 0
+!ADD_GOAL 4 1 0 4
+!ADD_GOAL 4 1 0 5
 
 !SET_AI_START_POSITION 62 70
 !SET_AI_ARMY_TYPE 0
@@ -494,4 +496,4 @@
 !SET_UNIT 25 5 71
 !SET_UNIT 25 11 77
 
-//This mission was made with KaM Remake Map Editor version r13651 at 24.11.2021 21:23:11
+//This mission was made with KaM Remake Map Editor version r13651 at 24.11.2021 21:32:29
