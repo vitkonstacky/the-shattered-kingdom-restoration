@@ -8,9 +8,10 @@
 !SET_RGB_COLOR 3556340
 !CENTER_SCREEN 31 85
 
+!ADD_LOST_GOAL 3 0 0 0
 !ADD_GOAL 3 1 0 1
 !ADD_GOAL 4 1 0 1
-!ADD_LOST_GOAL 3 0 0 0
+!ADD_GOAL 4 1 0 2
 
 !SET_AI_START_POSITION 0 0
 !SET_AI_ARMY_TYPE 0
@@ -359,4 +360,4 @@
 !SET_UNIT 26 5 59
 !SET_UNIT 26 2 91
 
-//This mission was made with KaM Remake Map Editor version r13651 at 05.02.2022 14:15:25
+//This mission was made with KaM Remake Map Editor version r13651 at 05.02.2022 14:17:57
