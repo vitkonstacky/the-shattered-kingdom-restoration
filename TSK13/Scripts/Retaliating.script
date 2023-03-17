@@ -1,0 +1,103 @@
+{$EVENT evtUnitAttacked:RetaliatingOnUnitAttacked}
+
+
+type RetaliatingPlayer = record
+    PlayerID: Integer;
+    Retaliating: Boolean;
+end;
+
+
+type RetaliatingPlayerList = array of RetaliatingPlayer;
+
+
+var
+    gRetaliatingPlayers: RetaliatingPlayerList;
+
+
+function RetaliatingPlayerIsReady(aPlayer: RetaliatingPlayer): Boolean;
+begin
+    Result := false;
+
+    if (S.PlayerEnabled(aPlayer.PlayerID) = false) then
+    begin
+        exit;
+    end;
+
+    if (S.PlayerIsAI(aPlayer.PlayerID) = false) then
+    begin
+        exit;
+    end;
+
+    if (aPlayer.Retaliating = true) then
+    begin
+        exit;
+    end;
+
+    Result := true;
+end;
+
+
+procedure RetaliatingPlayerCreateAttack(aPlayer: RetaliatingPlayer);
+var
+    fIndex: Integer;
+    fAttack: TKMAIAttackInfo;
+begin
+    if (RetaliatingPlayerIsReady(aPlayer) = false) then
+    begin
+        exit;
+    end;
+
+    A.AIAttackRemoveAll(aPlayer.PlayerID);
+
+    fAttack.AttackType := aatRepeating;
+    fAttack.Delay := 0;
+    fAttack.TotalMen := 1;
+    fAttack.RandomGroups := true;
+    fAttack.Target := attClosestUnit;
+
+    A.AIAttackAddEx(aPlayer.PlayerID, fAttack);
+
+    for fIndex := 0 to High(gRetaliatingPlayers) do
+    begin
+        if (gRetaliatingPlayers[fIndex].PlayerID = aPlayer.PlayerID) then
+        begin
+            break;
+        end;
+    end;
+
+    gRetaliatingPlayers[fIndex].Retaliating := true;
+end;
+
+
+procedure RetaliatingOnUnitAttacked(aUnit: Integer; aAttacker: Integer);
+var
+    fIndex, fUnitOwner: Integer;
+begin
+    fUnitOwner := S.UnitOwner(aUnit);
+
+    for fIndex := 0 to High(gRetaliatingPlayers) do
+    begin
+        if (fUnitOwner <> gRetaliatingPlayers[fIndex].PlayerID) then
+        begin
+            continue;
+        end;
+
+        RetaliatingPlayerCreateAttack(gRetaliatingPlayers[fIndex]);
+    end;
+end;
+
+
+function RetaliatingCreatePlayer(aPlayerID: Integer): RetaliatingPlayer;
+var
+    fPlayer: RetaliatingPlayer;
+begin
+    fPlayer.PlayerID := aPlayerID;
+
+    fPlayer.Retaliating := false;
+
+    SetLength(gRetaliatingPlayers, Length(gRetaliatingPlayers) + 1);
+
+    gRetaliatingPlayers[High(gRetaliatingPlayers)] := fPlayer;
+
+    Result := fPlayer;
+end;

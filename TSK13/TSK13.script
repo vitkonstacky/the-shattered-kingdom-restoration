@@ -1,0 +1,17 @@
+{$I Scripts/Constants.script}
+{$I Scripts/Retaliating.script}
+{$I Scripts/Smartwalking.script}
+
+
+procedure OnMissionStart();
+var
+    fKnightNorth, fKnightSouth: SmartwalkingGroup;
+begin
+    RetaliatingCreatePlayer(PLAYER_4);
+
+    fKnightNorth := SmartwalkingCreateGroup(58, 7, 300);
+    SmartwalkingCreatePoint(fKnightNorth, 34, 27, DIRECTION_W);
+
+    fKnightSouth := SmartwalkingCreateGroup(60, 57, 300);
+    SmartwalkingCreatePoint(fKnightSouth, 34, 35, DIRECTION_W);
+end;
