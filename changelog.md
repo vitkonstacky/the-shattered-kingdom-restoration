@@ -16,6 +16,26 @@
 - moved armies around slightly to make them easier on the eyes
 - made the walking destination of the human army prettier
 
+## Mission 10
+
+### AI
+
+- reworked attacks 
+
+### Balance
+
+- made the human army walk towards the city
+- set enemy condition to full to prevent cheesing
+
+### General
+
+- set mission type to tactical
+
+### Visuals
+
+- changed the human city to look similar to the city in the next mission
+- made human city look like it's already working for some time
+
 ## Mission 13
 
 ### AI
