@@ -51,3 +51,19 @@
 ### Visuals
 
 - moved armies around slightly to make them easier on the eyes
+
+## Mission 17
+
+### AI
+
+- added script to make sure all forces retaliate if they are attacked
+- split enemies into multiple players to ensure correct retaliation
+
+### Balance
+
+- set human condition to default to prevent cheesing
+- set enemy condition to full to prevent cheesing
+
+### Visuals
+
+- moved armies around slightly to make them easier on the eyes
