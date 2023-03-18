@@ -1,0 +1,14 @@
+{$I Scripts/Constants.script}
+{$I Scripts/Retaliating.script}
+
+
+procedure OnMissionStart();
+begin
+    RetaliatingCreatePlayer(PLAYER_2);
+    RetaliatingCreatePlayer(PLAYER_3);
+    RetaliatingCreatePlayer(PLAYER_4);
+    RetaliatingCreatePlayer(PLAYER_5);
+    RetaliatingCreatePlayer(PLAYER_6);
+    RetaliatingCreatePlayer(PLAYER_7);
+    RetaliatingCreatePlayer(PLAYER_8);
+end;
