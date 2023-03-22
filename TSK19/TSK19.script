@@ -1,0 +1,27 @@
+{$I Scripts/Constants.script}
+{$I Scripts/Smartwalking.script}
+
+
+procedure OnMissionStart();
+var
+    fCenterFirstWaveKnightLeft, fCenterFirstWaveKnightCenter, fCenterFirstWaveKnightRight: SmartwalkingGroup;
+    fLeftFirstWaveSwordman, fLeftFirstWaveKnightLeft, fLeftFirstWaveKnightRight: SmartwalkingGroup;
+begin
+    fCenterFirstWaveKnightLeft := SmartwalkingCreateGroup(22, 52, 150);
+    SmartwalkingCreatePoint(fCenterFirstWaveKnightLeft, 33, 64, DIRECTION_S);
+
+    fCenterFirstWaveKnightCenter := SmartwalkingCreateGroup(26, 46, 150);
+    SmartwalkingCreatePoint(fCenterFirstWaveKnightCenter, 32, 60, DIRECTION_S);
+
+    fCenterFirstWaveKnightRight := SmartwalkingCreateGroup(34, 45, 150);
+    SmartwalkingCreatePoint(fCenterFirstWaveKnightRight, 38, 63, DIRECTION_S);
+
+    fLeftFirstWaveSwordman := SmartwalkingCreateGroup(11, 51, 200);
+    SmartwalkingCreatePoint(fLeftFirstWaveSwordman, 4, 73, DIRECTION_E);
+
+    fLeftFirstWaveKnightLeft := SmartwalkingCreateGroup(8, 45, 200);
+    SmartwalkingCreatePoint(fLeftFirstWaveKnightLeft, 9, 69, DIRECTION_E);
+
+    fLeftFirstWaveKnightRight := SmartwalkingCreateGroup(18, 47, 200);
+    SmartwalkingCreatePoint(fLeftFirstWaveKnightRight, 11, 76, DIRECTION_E);
+end;
