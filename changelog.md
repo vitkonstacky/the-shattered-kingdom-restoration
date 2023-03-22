@@ -67,3 +67,19 @@
 ### Visuals
 
 - moved armies around slightly to make them easier on the eyes
+
+## Mission 19
+
+### AI
+
+- added script to make enemies go in the correct positions
+- changed enemy owners to ensure they attack in waves correctly
+
+### Balance
+
+- set enemy condition to full to prevent cheesing
+
+### Visuals
+
+- moved armies around slightly to make them easier on the eyes
+- made enemy city look like it's already working for some time
