@@ -16,6 +16,23 @@
 - moved armies around slightly to make them easier on the eyes
 - made the walking destination of the human army prettier
 
+## Mission 6
+
+### AI
+
+- moved armies eround for better attack handling
+- added script to make sure all forces attack correct positions
+- reworked attacks to be in waves to make them feel better
+
+### Balance
+
+- set enemy condition to full to prevent cheesing
+- drastically reduced the number of enemy units
+
+### Visuals
+
+- made the walking destination of the ally army prettier
+
 ## Mission 10
 
 ### AI
