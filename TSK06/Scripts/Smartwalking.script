@@ -1,0 +1,157 @@
+{$EVENT evtTick:SmartwalkingOnTick}
+
+
+type SmartwalkingPoint = record
+    X: Integer;
+    Y: Integer;
+    Direction: Integer;
+end;
+
+
+type SmartwalkingPointList = array of SmartwalkingPoint;
+
+
+type SmartwalkingGroup = record
+    GroupID: Integer;
+    Delay: Integer;
+    Points: SmartwalkingPointList;
+end;
+
+
+type SmartwalkingGroups = array of SmartwalkingGroup;
+
+
+var
+    gSmartwalkingGroups: SmartwalkingGroups;
+
+
+function SmartwalkingGroupIsReady(aGroup: SmartwalkingGroup): Boolean;
+begin
+    Result := false;
+
+    if (S.GroupDead(aGroup.GroupID) = true) then
+    begin
+        exit;
+    end;
+
+    if (S.GroupIdle(aGroup.GroupID) = false) then
+    begin
+        exit;
+    end;
+
+    if (S.GameTime < aGroup.Delay) then
+    begin
+        exit;
+    end;
+
+    Result := true;
+end;
+
+
+function SmartwalkingGroupHasNextPoint(aGroup: SmartwalkingGroup): Boolean;
+begin
+    Result := false;
+
+    if (Length(aGroup.Points) = 0) then
+    begin
+        exit;
+    end;
+
+    Result := true;
+end;
+
+
+function SmartwalkingGroupGetNextPoint(aGroup: SmartwalkingGroup): SmartwalkingPoint;
+var
+    fI, fJ: Integer;
+begin
+    Result := aGroup.Points[0];
+
+    for fI := 0 to High(gSmartwalkingGroups) do
+    begin
+        if (gSmartwalkingGroups[fI].GroupID <> aGroup.GroupID) then
+        begin
+            continue;
+        end;
+
+        for fJ := 1 to High(gSmartwalkingGroups[fI].Points) do
+        begin
+            gSmartwalkingGroups[fI].Points[fJ - 1] := gSmartwalkingGroups[fI].Points[fJ];
+        end;
+
+        SetLength(gSmartwalkingGroups[fI].Points, High(gSmartwalkingGroups[fI].Points));
+
+        exit;
+    end;
+end;
+
+
+procedure SmartwalkingGroupOrderWalk(aGroup: SmartwalkingGroup);
+var
+    fPoint: SmartwalkingPoint;
+begin
+    if (SmartwalkingGroupIsReady(aGroup) = false) then
+    begin
+        exit;
+    end;
+
+    if (SmartwalkingGroupHasNextPoint(aGroup) = false) then
+    begin
+        exit;
+    end;
+
+    fPoint := SmartwalkingGroupGetNextPoint(aGroup);
+
+    A.GroupOrderWalk(aGroup.GroupID, fPoint.X, fPoint.Y, fPoint.Direction);
+end;
+
+
+procedure SmartwalkingOnTick();
+var
+    fIndex: Integer;
+begin
+    for fIndex := 0 to High(gSmartwalkingGroups) do
+    begin
+        SmartwalkingGroupOrderWalk(gSmartwalkingGroups[fIndex]);
+    end;
+end;
+
+
+function SmartwalkingCreateGroup(aX: Integer; aY: Integer; aDelay: Integer): SmartwalkingGroup;
+var
+    fGroup: SmartwalkingGroup;
+begin
+    fGroup.GroupID := S.GroupAt(aX, aY);
+
+    fGroup.Delay := aDelay;
+
+    SetLength(gSmartwalkingGroups, Length(gSmartwalkingGroups) + 1);
+
+    gSmartwalkingGroups[High(gSmartwalkingGroups)] := fGroup;
+
+    Result := fGroup;
+end;
+
+
+procedure SmartwalkingCreatePoint(aGroup: SmartwalkingGroup; aX: Integer; aY: Integer; aDirection: Integer);
+var
+    fIndex: Integer;
+    fPoint: SmartwalkingPoint;
+begin
+    fPoint.X := aX;
+    fPoint.Y := aY;
+
+    fPoint.Direction := aDirection;
+
+    for fIndex := 0 to High(gSmartwalkingGroups) do
+    begin
+        if (gSmartwalkingGroups[fIndex].GroupID = aGroup.GroupID) then
+        begin
+            break;
+        end;
+    end;
+
+    SetLength(gSmartwalkingGroups[fIndex].Points, Length(gSmartwalkingGroups[fIndex].Points) + 1);
+
+    gSmartwalkingGroups[fIndex].Points[High(gSmartwalkingGroups[fIndex].Points)] := fPoint;
+end;

@@ -1,0 +1,52 @@
+{$I Scripts/Constants.script}
+{$I Scripts/Smartwalking.script}
+
+
+procedure OnMissionStart();
+var
+    fRightFirstWavePurpleScout: SmartwalkingGroup;
+    fCenterFirstWaveBlueKnight, fCenterFirstWaveBlueScout, fCenterFirstWaveBlueBowman: SmartwalkingGroup;
+    fLeftFirstWaveBlueAxemanFront, fLeftFirstWaveBlueBowman, fLeftFirstWaveBlueAxemanBack, fLeftFirstWavePurpleAxeman: SmartwalkingGroup;
+    fRightSecondWavePurpleAxeman: SmartwalkingGroup;
+    fCenterSecondWaveBlueLanceCarrier, fCenterSecondWaveBlueKnight: SmartwalkingGroup;
+    fLeftSecondWaveBlueAxeman, fLeftSecondWaveBlueBowman: SmartwalkingGroup;
+begin
+    fRightFirstWavePurpleScout := SmartwalkingCreateGroup(39, 31, 50);
+    SmartwalkingCreatePoint(fRightFirstWavePurpleScout, 70, 50, DIRECTION_E);
+
+    fCenterFirstWaveBlueKnight := SmartwalkingCreateGroup(33, 49, 50);
+    SmartwalkingCreatePoint(fCenterFirstWaveBlueKnight, 66, 51, DIRECTION_E);
+
+    fCenterFirstWaveBlueScout := SmartwalkingCreateGroup(33, 43, 50);
+    SmartwalkingCreatePoint(fCenterFirstWaveBlueScout, 66, 56, DIRECTION_E);
+
+    fCenterFirstWaveBlueBowman := SmartwalkingCreateGroup(29, 45, 50);
+    SmartwalkingCreatePoint(fCenterFirstWaveBlueBowman, 60, 51, DIRECTION_E);
+
+    fLeftFirstWaveBlueAxemanFront := SmartwalkingCreateGroup(33, 65, 0);
+    SmartwalkingCreatePoint(fLeftFirstWaveBlueAxemanFront, 58, 76, DIRECTION_E);
+
+    fLeftFirstWaveBlueBowman := SmartwalkingCreateGroup(29, 68, 0);
+    SmartwalkingCreatePoint(fLeftFirstWaveBlueBowman, 52, 72, DIRECTION_E);
+
+    fLeftFirstWaveBlueAxemanBack := SmartwalkingCreateGroup(26, 62, 0);
+    SmartwalkingCreatePoint(fLeftFirstWaveBlueAxemanBack, 56, 70, DIRECTION_E);
+
+    fLeftFirstWavePurpleAxeman := SmartwalkingCreateGroup(30, 56, 150);
+    SmartwalkingCreatePoint(fLeftFirstWavePurpleAxeman, 53, 72, DIRECTION_E);
+
+    fRightSecondWavePurpleAxeman := SmartwalkingCreateGroup(41, 24, 200);
+    SmartwalkingCreatePoint(fRightSecondWavePurpleAxeman, 63, 49, DIRECTION_E);
+
+    fCenterSecondWaveBlueLanceCarrier := SmartwalkingCreateGroup(30, 37, 200);
+    SmartwalkingCreatePoint(fCenterSecondWaveBlueLanceCarrier, 63, 49, DIRECTION_E);
+
+    fCenterSecondWaveBlueKnight := SmartwalkingCreateGroup(24, 41, 350);
+    SmartwalkingCreatePoint(fCenterSecondWaveBlueKnight, 59, 52, DIRECTION_E);
+
+    fLeftSecondWaveBlueAxeman := SmartwalkingCreateGroup(24, 71, 200);
+    SmartwalkingCreatePoint(fLeftSecondWaveBlueAxeman, 57, 55, DIRECTION_E);
+
+    fLeftSecondWaveBlueBowman := SmartwalkingCreateGroup(18, 72, 200);
+    SmartwalkingCreatePoint(fLeftSecondWaveBlueBowman, 50, 53, DIRECTION_E);
+end;
